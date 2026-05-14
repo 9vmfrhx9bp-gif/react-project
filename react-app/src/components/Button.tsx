@@ -1,9 +1,13 @@
 
+import { SlCalender } from "react-icons/sl";
+
 interface Props {
     type: string;
+    onClick: () => void;
 }
+let state: string = "show"
 
-function Button({ type }: Props) {
+function Button({ type, onClick }: Props) {
 
     let status: string;
     switch (type) {
@@ -22,7 +26,13 @@ function Button({ type }: Props) {
 
     }
     return (
-        <button type="button" className={status}>{type}</button>
+        <>
+            <button type="button" className={status} onClick={onClick}>{type} <SlCalender /></button>
+
+        </>
+
+
+
     )
 }
 
