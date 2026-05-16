@@ -1,22 +1,18 @@
 import { useState } from "react";
-import Alert from "./components/Alert";
+import PlayerProfile from "./components/PlayerProfile";
 import Button from "./components/Button";
+import Like from "./components/Like";
+import Text from "./components/Text"
+import ExpandableText from "./components/Text";
+import Form from "./components/Form"
 
 
 
 
 function App() {
-  const [alertVisible, setAlertVisibility] = useState(false)
-  return (
-    <div>
+  return (<Form>
 
-      {alertVisible && <Alert onClose={() => setAlertVisibility(false)}>Alert</Alert>}
-      <Button type="success" onClick={() => setAlertVisibility(true)}></Button>
-
-
-
-    </div >
-  );
+  </Form>)
 }
 
 export default App;
