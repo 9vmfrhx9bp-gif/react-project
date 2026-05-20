@@ -1,38 +1,52 @@
 import React from "react";
 
-function ExpenseList() {
+interface Expense {
+  id: number;
+  description: string;
+  amount: number;
+  category: string;
+
+}
+
+interface Props {
+  expenses: Expense[]
+  onDelete: (id: number) => void;
+}
+
+
+
+function ExpenseList({ expenses, onDelete }: Props) {
+
+  if (expenses.length === 0) return null
+
   return (
     <div className="box">
       <h2>Expense List</h2>
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Description</th>
             <th scope="col">Amount</th>
             <th scope="col">Category</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>John</td>
-            <td>Doe</td>
-            <td>@social</td>
-          </tr>
+          {expenses.map(expense => <tr key={expense.id}>
+            <td>{expense.description}</td>
+            <td>{expense.amount}</td>
+            <td>{expense.category}</td>
+            <td><button onClick={() => onDelete(expense.id)} className="btn btn-outline-danger">Delete</button></td>
+          </tr>)}
         </tbody>
+        <tfoot>
+          <tr>
+            <td>Total</td>
+            <td>${expenses.reduce((acc, expense) => expense.amount + acc, 0).toFixed(2)}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   );

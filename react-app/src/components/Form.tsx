@@ -25,7 +25,7 @@ function Form() {
             </div>
             <div className="mb-3">
                 <label htmlFor="age" className="form-label">Age</label>
-                <input {...register('age')} id="age" type="number" className="form-control" />
+                <input {...register('age', { valueAsNumber: true })} id="age" type="number" className="form-control" />
                 {errors.age && (<p>{errors.age.message}</p>)}
             </div>
             <button className="btn btn-primary" type="submit">Submit</button>
